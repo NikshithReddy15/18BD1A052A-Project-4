@@ -33,6 +33,6 @@ pip install pyzbar
 # Prequisites
 wkhtmltopdf
 
-Mongodb -> e-pass.template
+Mongodb -> e-pass.token
 
 Python
