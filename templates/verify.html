@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Verification Page</title>
+    </head>
+    <body>
+        <form action="/textverify" method="post">
+            <label for="id">Enter your identification code</label>
+            <input type="text" name="id"><br>
+            <input type="submit" value="verify">
+            <input type="button" value="Scan QR Code" onclick="window.location.href='/scantoverify'">
+        </form>
+    </body>
+</html>
+
+<html>
+    <head>
+        <title>Welcome to e-pass repository</title>
+        <script src="{{ url_for('static', filename='js/fetch.js') }}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class="hold-transition bg-light bg-darken-xl">
+        <div class="wrapper">
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                    <a href="/" class="nav-link"><h5>e-pass registration portal</h5></a>
+            </nav>
+            <div class="content-wrapper col-6 float-left">
+                <section class="content-header card bg-dark text-white"><h4 class="card-body">New Registration?</h4></section>
+                <section class="content-body card-body bg-white">
+                    
+                </section>
+            </div>
+            <div class="content-wrapper col-6 float-right">
+                
+            </div>
+        </div>
+    </body>
+</html>

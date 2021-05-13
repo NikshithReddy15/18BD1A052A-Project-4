@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>Welcome to e-pass repository</title>
+        <script src="{{ url_for('static', filename='js/fetch.js') }}"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body class="hold-transition bg-light bg-darken-xl">
+        <div class="wrapper">
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                <a href="/" class="nav-link"><h5>e-pass registration portal</h5></a>
+            </nav>
+            <div class="content-wrapper col-6 float-left">
+                <section class="content-header card bg-dark text-white"><h4 class="card-body">New Registration?</h4></section>
+                <section class="content-body card-body bg-white">
+                    <form action = "/register" method = "post" class = "form-horizontal">
+                        <div class="form-group">
+                            <label for="firstname" class="control-label col-sm-4">First Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="firstname" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="middlename" class="control-label col-sm-4">Middle Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="middlename" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname" class="control-label col-sm-4">Last Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" name="lastname" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="control-label col-sm-4">Contact Number</label>
+                            <div class="col-sm-8">
+                                <input type="number" name="phone" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="control-label col-sm-4">Email Address</label>
+                            <div class="col-sm-8">
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="aadhar" class="control-label col-sm-4">Aadhar Number</label>
+                            <div class="col-sm-8">
+                                <input type="number" name="aadhar" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-6">Selct Departing Location</label>
+                            <div class="col-sm-8">
+                                <select name="source-state" id="source-state" onmouseover="srcstate();" class="form-control col-10" required><option value="">Select State</option></select>
+                                <select name="source-district" id="source-district" onmouseover="srcdist();" class="form-control col-10" required><option value="">Select District</option></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-6">Selct Arriving Location</label>
+                            <div class="col-sm-8">
+                                <select name="destination-state" id="destination-state" onmouseover="deststate();" class="form-control col-10" required><option value="">Select State</option></select>
+                                <select name="destination-district" id="destination-district" onmouseover="destdist();" class="form-control col-10" required><option value="">Select District</option></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date" class="control-label col-sm-4">Enter Date of Journey</label>
+                            <div class="col-sm-8">
+                                <input type="date" name="date" id="date" min='' class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8">
+                                <input type="submit" value="Get Pass" class="btn btn-primary">
+                            </div>
+                        </div>
+                        <script>
+                            var d = new Date();
+                            var month = d.getMonth()+1;
+                            var date = d.getDate();
+                            if(month < 10) {
+                                month = "0"+month;
+                            }else {}
+                            if(date < 10) {
+                                date = "0"+date;
+                            }else{}
+                            document.getElementById("date").min=d.getFullYear()+"-"+month+"-"+date;
+                        </script>
+                    </form>
+                </section>
+            </div>
+            <div class="content-wrapper col-6 float-right">
+                <section class="content-header card bg-info text-white"><h4 class="card-body">Already Registered? Check your registration status.</h4></section>
+                <section class="content-body card">
+                    <form action="/textverify" method="post" class="form-inline card-body">
+                        <div class="form-group">
+                            <label for="id" class="col-sm-6 control-label">Enter your identification code</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="id" class="form-control"><br>
+                            </div>
+                        </div><br>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="submit" value="verify" class="btn btn-info">
+                            </div>
+                        </div>
+                    </form>
+                    <a class="form-group col-sm-12" href="/scantoverify">Want to scan using QR Code?</a>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>
