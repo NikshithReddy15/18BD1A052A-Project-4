@@ -12,8 +12,8 @@ app.config['UPLOAD_FOLDER'] = os.path.join('static', 'images')
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = '18bd1a052a@gmail.com'
-app.config['MAIL_PASSWORD'] = 'Chikku15'
+app.config['MAIL_USERNAME'] = ''    #use mail id
+app.config['MAIL_PASSWORD'] = ''    #use mail password
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
@@ -51,13 +51,13 @@ def input_registration_details():
         if(ratio > 0.3):
             id1 = ''.join((random.choice(string.ascii_letters+string.digits) for x in range(20)))
             db.token.insert_one({'_id' : id1, 'name' : firstname + " " + middlename + " " + lastname, 'phone number' : phone, 'email' : email, 'aadhar' : aadhar, 'source state' : srcstate, 'source district' : srcdist, 'destination state' : deststate, 'destination district' : destdist, 'date' : date})
-            qrcode.make(id1).save("C:/Users/niksh/OneDrive/Documents/FS Micro Project/Project - 4 e-Pass/static/images/"+id1+".png")
+            qrcode.make(id1).save("static/images/"+id1+".png")
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], id1+'.png')
             
             x =  render_template('approved.html', qrcode=filepath, id=id1, name=firstname + " " + middlename + " " + lastname, phone=phone, email=email, src=srcdist+", "+srcstate, dest=destdist+", "+deststate, date=date)
             options = {"enable-local-file-access": None}#, "load-error-handling": "ignore", "load-media-error-handling": "ignore"}
             pdfkit.from_string(x, 'static/pdfs/temp.pdf', options = options)
-            msg = Message('e-pass Registration', sender = '18bd1a052a@gmail.com', recipients = [email])
+            msg = Message('e-pass Registration', sender = 'app.config['MAIL_USERNAME']', recipients = [email])
             msg.body = "e-Pass registration"
             with app.open_resource("static/pdfs/temp.pdf") as fp:
                 msg.attach("temp.pdf", "application/pdf", fp.read())
