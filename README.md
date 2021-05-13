@@ -29,3 +29,10 @@ pip install string
 pip install numpy
 
 pip install pyzbar
+
+# Prequisites
+wkhtmltopdf
+
+Mongodb -> e-pass.template
+
+Python
