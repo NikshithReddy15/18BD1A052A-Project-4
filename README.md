@@ -30,6 +30,8 @@ pip install numpy
 
 pip install pyzbar
 
+pip install image
+
 # Prequisites
 wkhtmltopdf
 
